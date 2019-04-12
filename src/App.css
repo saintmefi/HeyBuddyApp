@@ -1,33 +1,50 @@
 .App {
   text-align: center;
+  background-color: #fdf0d6;
 }
+.col-6{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 37px;
+}
+.col-6 .titulo{
+  font-family: 'Poppins', sans-serif;
+}
+
+.col-5{
+  text-align: initial;
+  font-family: 'Poppins', sans-serif;
+}
+
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar navbar-light{
+ background-color:#fdf0d6
+}
+.navbar-brand{
+  font-family: 'Pacifico', cursive;
+}
+.boton{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center
+}
+.Input{
+  font-family: 'Poppins', sans-serif;
+  width: 370px;
+}
+
+
+.Titulo{
+  font-family: 'Poppins', sans-serif;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.card-text{
+  font-family: 'Poppins', sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
