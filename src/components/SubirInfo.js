@@ -98,7 +98,7 @@ class SubirInfo extends Component {
                 <input onChange={this.onInputChange} type="text" className="form-control" id="cp" placeholder="" />
               </div>
               <div className= "boton">
-              <Link to = "https://heybuddyfinal.herokuapp.com" >
+              <Link to = "/" >
               <button className="btn btn-success" type="submit" >
               Continuar
               </button>
