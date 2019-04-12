@@ -87,7 +87,6 @@ class Buscar extends Component {
             {this.renderizarResultados()}
           </div>
         </div>
-        {/* <Persona/> */}
       </div>
     );
   }
