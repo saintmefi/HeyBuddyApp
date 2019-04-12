@@ -1,61 +1,62 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 class SubirInfo extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            foto: '',
-            nombre: '',
-            correo: '',
-            tipo: 'Psicólogo',
-            experiencia: 5,
-            bio: '',
-            duracion: 1,
-            direccion:'',
-            cp:''
-         }
+  constructor(props) {
+    super(props);
+    this.state = {
+      foto: '',
+      nombre: '',
+      correo: '',
+      tipo: 'Psicólogo',
+      experiencia: 5,
+      bio: '',
+      duracion: 1,
+      direccion: '',
+      cp: ''
     }
-    onInputChange = (e)=>{
-      const {id, value} = e.target;
-      console.log(id, value)
-      this.setState({[id]: value})
-    }
-    PostPersona = (e) =>{
-      e.preventDefault();
-      console.log(this.state)
-      axios.post ('https://heybuddydevf.herokuapp.com/personas', this.state)
-      .then(res=>{
-        if (res.status ===201){
+  }
+  onInputChange = (e) => {
+    const { id, value } = e.target;
+    console.log(id, value)
+    this.setState({ [id]: value })
+  }
+  PostPersona = (e) => {
+    e.preventDefault();
+    console.log(this.state)
+    axios.post('https://heybuddydevf.herokuapp.com/personas', this.state)
+      .then(res => {
+        if (res.status === 201) {
           alert('Se han subido correctamente tus datos')
+          this.setState({redirect: true});
         }
-      }).catch(err=>{
+      }).catch(err => {
         alert('Hubo un error', err)
       })
 
-    }
-    render() { 
-        return ( 
-          <div  className="container">
-          <nav className="navbar navbar-light">
-              <a className="navbar-brand" href="#">HeyBuddy!   
+  }
+  render() {
+    return (
+      <div className="container">
+        <nav className="navbar navbar-light">
+          <a className="navbar-brand" href="#">HeyBuddy!
               </a>
-            </nav>
-          <div className="row">
+        </nav>
+        <div className="row">
           <div className="col-6 titulo">
-          <div className="row">
-          <h1>Registrate como un Buddy </h1>
+            <div className="row">
+              <h1>Registrate como un Buddy </h1>
+            </div>
+            <div className="row">
+              <h1>y ayuda a los que estan </h1>
+            </div>
+            <div className="row">
+              <h1>cerca de ti.</h1>
+            </div>
           </div>
-          <div className="row">
-          <h1>y ayuda a los que estan </h1>
-          </div>
-          <div className="row">
-            <h1>cerca de ti.</h1>
-          </div>
-          </div>
-          <div className= "col-5">
+          <div className="col-5">
             <form onSubmit={this.PostPersona}>
               <div className="form-group">
                 <label htmlFor="nombre">Nombre</label>
@@ -63,11 +64,11 @@ class SubirInfo extends Component {
               </div>
               <div className="form-group">
                 <label htmlFor="correo">Correo electrónico</label>
-                <input onChange={this.onInputChange}type="text" className="form-control" id="correo" placeholder="" />
+                <input onChange={this.onInputChange} type="text" className="form-control" id="correo" placeholder="" />
               </div>
               <div className="form-group">
                 <label htmlFor="foto">Sube una foto tuya</label>
-                <input onChange={this.onInputChange}type="text" className="form-control" id="foto" placeholder="Pega una URL" />
+                <input onChange={this.onInputChange} type="text" className="form-control" id="foto" placeholder="Pega una URL" />
               </div>
               <div class="form-group">
                 <label for="tipo">Selecciona tu especialidad</label>
@@ -97,19 +98,18 @@ class SubirInfo extends Component {
                 <label htmlFor="cp">Código postal</label>
                 <input onChange={this.onInputChange} type="text" className="form-control" id="cp" placeholder="" />
               </div>
-              <div className= "boton">
-              <Link to = "/" >
-              <button className="btn btn-success" type="submit" >
-              Continuar
-              </button>
-              </Link>
+              <div className="boton">
+                <button className="btn btn-success" type="submit" >
+                  Continuar
+                </button>
               </div>
             </form>
           </div>
-          </div>
-          </div>
-         );
-    }
+        </div>
+        { this.state.redirect ? <Redirect to="/"/> : ''}
+      </div>
+    );
+  }
 }
- 
+
 export default SubirInfo;
