@@ -10,7 +10,7 @@ class Persona extends Component {
          }
     }
     componentDidMount(){
-        axios.get('http://localhost:3001/personas')
+        axios.get('https://heybuddydevf.herokuapp.com/personas')
         .then(response=>{
             console.log('Get', response);
             this.setState({personas:response.data});

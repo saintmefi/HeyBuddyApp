@@ -26,7 +26,7 @@ class SubirInfo extends Component {
     PostPersona = (e) =>{
       e.preventDefault();
       console.log(this.state)
-      axios.post ('http://localhost:3001/personas', this.state)
+      axios.post ('https://heybuddydevf.herokuapp.com/personas', this.state)
       .then(res=>{
         if (res.status ===201){
           alert('Se han subido correctamente tus datos')
